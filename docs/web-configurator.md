@@ -222,6 +222,37 @@ Enabling this add-on will allow you to use GP2040-CE on a PS4 with an 8 minute t
 * `Serial Number (16 Bytes in Hex Ascii)` - Choose your serial number file.
 * `Signature (256 Bytes in Binary)` - Choose your signature file.
 
+### Wii Extensions
+
+![GP2040 Configurator - Wii Extensions](assets/images/gpc-add-ons-wii-extensions.png)
+
+* `I2C SDA Pin` - The GPIO pin used for Wii Extension SDA.
+* `I2C SCL Pin` - The GPIO pin used for Wii Extension SCL.
+* `I2C Block` - The block of I2C to use (i2c0 or i2c1).
+* `I2C Speed` - Sets the speed of I2C communication. Common values are `100000` for standard, or `400000` for fast.
+
+Supported Extension Controllers and their mapping is as follows:
+
+| GP2040-CE | Nunchuck | Classic      | Guitar Hero Guitar |
+|-----------|----------|--------------|--------------------|
+| B1        | C        | B            | Green              |
+| B2        | Z        | A            | Red                |
+| B3        |          | Y            | Blue               |
+| B4        |          | X            | Yellow             |
+| L1        |          | L            |                    |
+| L2        |          | ZL           |                    |
+| R1        |          | R            |                    |
+| R2        |          | ZR           |                    |
+| S1        |          | Select       |                    |
+| S2        |          | Start        |                    |
+| A1        |          | Home         |                    |
+| D-Pad     |          | D-Pad        | Strum Up/Down      |
+| Analog    | Left     | Left & Right | Left               |
+
+Classic Controller support includes Classic, Classic Pro, and NES/SNES Mini Controllers. 
+
+Original Classic Controller L & R triggers are analog sensitive, where Pro triggers are not.
+
 ## Data Backup and Restoration
 
 ![GP2040-CE Configurator - Add-Ons Backup and Restore](assets/images/gpc-backup-and-restore.png)
@@ -233,13 +264,11 @@ Enabling this add-on will allow you to use GP2040-CE on a PS4 with an 8 minute t
 
 ![GP2040-CE Configurator - Reset Settings](assets/images/gpc-reset-settings.png)
 
-=======
-
 # Linux Setup
 
 When you plug in your controller while holding <hotkey v-bind:buttons='["S2"]'></hotkey>, you should see it connect in the kernel logs if you run `dmesg`:
 
-```
+```sh
 [   72.291060] usb 1-3: new full-speed USB device number 12 using xhci_hcd
 [   72.450166] usb 1-3: New USB device found, idVendor=cafe, idProduct=4028, bcdDevice= 1.01
 [   72.450172] usb 1-3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
@@ -256,7 +285,7 @@ The web configurator is automatically running, you just need to be able to reach
 
 Whether or not you had to add an IP manually, you should end up with a route something like this:
 
-```
+```sh
 % ip route
 default via 10.0.5.1 dev enp5s0 proto dhcp src 10.0.5.38 metric 2
 10.0.5.0/24 dev enp5s0 proto dhcp scope link src 10.0.5.38 metric 2
