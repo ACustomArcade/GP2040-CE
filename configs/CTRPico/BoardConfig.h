@@ -7,39 +7,57 @@
 #define PICO_BOARD_CONFIG_H_
 
 #include <GamepadEnums.h>
+
 // This is the main pin definition section.
-// This will let you specify which GPIO pin each button is assigned too.
+// This will let you specify which GPIO pin each button is assigned too. 
 // You can set any of the main pins as `-1` to disable it.
 // The Turbo pin and LS + RS slider pins can also be set to `-1` to disable that functionality.
 // Please note that only when `PIN_BUTTON_TURBO` is set to `-1` will the `T##` be removed from a connected display.
 // Please note that only when `PIN_SLIDER_LS` and  `PIN_SLIDER_RS` are set to `-1` will the button combo shortcut for DP/LS/RS work.
 // The buttons are listed in GP2040 configuration, beside each the listed order is *GP2040 / Xinput / Switch / PS3 / Directinput / Arcade*
 
-#define PIN_DPAD_UP     22           // UP
-#define PIN_DPAD_DOWN   23           // DOWN
-#define PIN_DPAD_RIGHT  26           // RIGHT
-#define PIN_DPAD_LEFT   24           // LEFT
-#define PIN_BUTTON_B1   21           // B1 / A / B / Cross / 2 / K1
-#define PIN_BUTTON_B2   20           // B2 / B / A / Circle / 3 / K2
-#define PIN_BUTTON_R2   19           // R2 / RT / ZR / R2 / 8 / K3
-#define PIN_BUTTON_L2   14           // L2 / LT / ZL / L2 / 7 / K4
-#define PIN_BUTTON_B3   18          // B3 / X / Y / Square / 1 / P1
-#define PIN_BUTTON_B4   17          // B4 / Y / X / Triangle / 4 / P2
-#define PIN_BUTTON_R1   16          // R1 / RB / R / R1 / 6 / P3
-#define PIN_BUTTON_L1   15          // L1 / LB / L / L1 / 5 / P4
-#define PIN_BUTTON_S1   11           // S1 / Back / Minus / Select / 9 / Coin
-#define PIN_BUTTON_S2   13           // S2 / Start / Plus / Start / 10 / Start
-#define PIN_BUTTON_L3   -1          // L3 / LS / LS / L3 / 11 / LS
-#define PIN_BUTTON_R3   -1          // R3 / RS / RS / R3 / 12 / RS
-#define PIN_BUTTON_A1   12          // A1 / Guide / Home / PS / 13 / ~
-#define PIN_BUTTON_A2   -1          // A2 / ~ / Capture / ~ / 14 / ~
-#define PIN_BUTTON_TURBO -1         // Turbo
-#define PIN_BUTTON_REVERSE -1       // UDLR Reverse
-#define PIN_SLIDER_LS    -1         // Left Stick Slider
-#define PIN_SLIDER_RS    -1         // Right Stick Slider
-#define PIN_SLIDER_SOCD_ONE    -1         // SOCD Slider Pin One
-#define PIN_SLIDER_SOCD_TWO    -1         // SOCD Slider Pin Two
-
+#define PIN_P1_DPAD_UP              22  // UP
+#define PIN_P1_DPAD_DOWN            23  // DOWN
+#define PIN_P1_DPAD_RIGHT           26  // RIGHT
+#define PIN_P1_DPAD_LEFT            24  // LEFT
+#define PIN_P1_BUTTON_B1            21  // B1 / A / B / Cross / 2 / K1
+#define PIN_P1_BUTTON_B2            20  // B2 / B / A / Circle / 3 / K2
+#define PIN_P1_BUTTON_R2            19  // R2 / RT / ZR / R2 / 8 / K3
+#define PIN_P1_BUTTON_L2            14  // L2 / LT / ZL / L2 / 7 / K4
+#define PIN_P1_BUTTON_B3            18  // B3 / X / Y / Square / 1 / P1
+#define PIN_P1_BUTTON_B4            17  // B4 / Y / X / Triangle / 4 / P2
+#define PIN_P1_BUTTON_R1            16  // R1 / RB / R / R1 / 6 / P3
+#define PIN_P1_BUTTON_L1            15  // L1 / LB / L / L1 / 5 / P4
+#define PIN_P1_BUTTON_S1            -1  // S1 / Back / Minus / Select / 9 / Coin
+#define PIN_P1_BUTTON_S2            -1  // S2 / Start / Plus / Start / 10 / Start
+#define PIN_P1_BUTTON_L3            -1  // L3 / LS / LS / L3 / 11 / LS
+#define PIN_P1_BUTTON_R3            -1  // R3 / RS / RS / R3 / 12 / RS
+#define PIN_P1_BUTTON_A1            -1  // A1 / Guide / Home / PS / 13 / ~
+#define PIN_P1_BUTTON_A2            -1  // A2 / ~ / Capture / ~ / 14 / ~
+#define PIN_P2_DPAD_UP              10  // UP
+#define PIN_P2_DPAD_DOWN            11  // DOWN
+#define PIN_P2_DPAD_RIGHT           13  // RIGHT
+#define PIN_P2_DPAD_LEFT            12  // LEFT
+#define PIN_P2_BUTTON_B1            9  // B1 / A / B / Cross / 2 / K1
+#define PIN_P2_BUTTON_B2            8  // B2 / B / A / Circle / 3 / K2
+#define PIN_P2_BUTTON_R2            7  // R2 / RT / ZR / R2 / 8 / K3
+#define PIN_P2_BUTTON_L2            3  // L2 / LT / ZL / L2 / 7 / K4
+#define PIN_P2_BUTTON_B3            6  // B3 / X / Y / Square / 1 / P1
+#define PIN_P2_BUTTON_B4            5  // B4 / Y / X / Triangle / 4 / P2
+#define PIN_P2_BUTTON_R1            2  // R1 / RB / R / R1 / 6 / P3
+#define PIN_P2_BUTTON_L1            15  // L1 / LB / L / L1 / 5 / P4
+#define PIN_P2_BUTTON_S1            -1  // S1 / Back / Minus / Select / 9 / Coin
+#define PIN_P2_BUTTON_S2            -1  // S2 / Start / Plus / Start / 10 / Start
+#define PIN_P2_BUTTON_L3            -1  // L3 / LS / LS / L3 / 11 / LS
+#define PIN_P2_BUTTON_R3            -1  // R3 / RS / RS / R3 / 12 / RS
+#define PIN_P2_BUTTON_A1            -1  // A1 / Guide / Home / PS / 13 / ~
+#define PIN_P2_BUTTON_A2            -1  // A2 / ~ / Capture / ~ / 14 / ~
+#define PIN_BUTTON_TURBO            -1  // Turbo
+#define PIN_BUTTON_REVERSE          -1  // UDLR Reverse
+#define PIN_SLIDER_LS               -1  // Left Stick Slider
+#define PIN_SLIDER_RS               -1  // Right Stick Slider
+#define PIN_SLIDER_SOCD_ONE         -1  // SOCD Slider Pin One
+#define PIN_SLIDER_SOCD_TWO         -1  // SOCD Slider Pin Two
 
 // This is the SOCD section.
 // SOCD stands for `simultaneous opposing cardinal directions`.
@@ -55,6 +73,8 @@
 #define SLIDER_SOCD_SLOT_TWO  SOCD_MODE_SECOND_INPUT_PRIORITY
 #define SLIDER_SOCD_SLOT_DEFAULT SOCD_MODE_NEUTRAL
 
+#define DEFAULT_INPUT_MODE INPUT_MODE_KEYBOARD //INPUT_MODE_XINPUT (XInput), INPUT_MODE_SWITCH (Nintendo Switch), INPUT_MODE_HID (D-Input), INPUT_MODE_KEYBOARD (Keyboard)
+#define DEFAULT_DPAD_MODE DPAD_MODE_DIGITAL  //DPAD_MODE_DIGITAL, DPAD_MODE_LEFT_ANALOG, DPAD_MODE_RIGHT_ANALOG, 
 
 // This is the LEDs section.
 // The default `TURBO_LED_PIN` pin is set to `15` ( it is recommended to run through 3V3(OUT) with a resistor)
@@ -64,7 +84,7 @@
 // The board LED pin will allow you to connect addressible RGB LEDs on the Pico.
 // Addressible RGB LEDs should be connected to the `VBUS` pin (#40), an avalible ground pin and the defined `BOARD_LEDS_PIN`.
 // Special note - You should only ever use addressible RGB LEDs that are rated for 5v operation on the Pico.
-// The defualt `LED_BRIGHTNESS_MAXIMUM` value is `50`.
+// The defualt `LED_BRIGHTNESS_MAXIMUM` value is `50`.  
 // This will change how bright the LEDs are with `0` being off and `100` being full brightness.
 // The minimum `LED_BRIGHTNESS_MAXIMUM` value is `0`.
 // The maximum `LED_BRIGHTNESS_MAXIMUM` value is `100`.
@@ -100,16 +120,15 @@
 #define LEDS_BUTTON_R2   10
 #define LEDS_BUTTON_L2   11
 
-
-// This is the Player LED section.
+// This is the Player LED section.  
 // In this section you can specify if Player LEDs will be active, and, if active, which pins will be used for them.
 // The defualt is `PLED_TYPE_NONE` which will turn the Player LEDs off.
-// The default pin for each Player LED is `-1` which disables it.
-// To enable a `PLED#_PIN`, replace the `-1` with the GPIO pin number that is desired.
+// The default pin for each Player LED is `-1` which disables it.  
+// To enable a `PLED#_PIN`, replace the `-1` with the GPIO pin number that is desired. 
 // There are three options for `PLED_TYPE` currently:
 // 1 - `PLED_TYPE_NONE` - This will disable the Player LEDs
 // 2 - `PLED_TYPE_PWM` - This will enable the Player LEDs ( it is recommended to run through 3V3(OUT) with a resistor)
-// 3 - `PLED_TYPE_RGB` - This will enable the Player LEDs as addressible RGB LEDs (please not that this has not been implemented yet)
+// 3 - `PLED_TYPE_RGB` - This will enable the Player LEDs as addressible RGB LEDs (please not that this has not been implemented yet) 
 
 #define PLED_TYPE PLED_TYPE_NONE
 #define PLED1_PIN -1
@@ -121,13 +140,10 @@
 // This is the Analog section.
 // In this section you can specify if Analog is enabled, and, if endabled, which pins will be used for it.
 // The default for `ANALOG_ADC_VRX` and `ANALOG_ADC_VRY` is `-1` which disables them.
-// To enable a `ANALOG_ADC_VRX` and `ANALOG_ADC_VRY`, replace the `-1` with the GPIO pin numbers that are desired.
+// To enable a `ANALOG_ADC_VRX` and `ANALOG_ADC_VRY`, replace the `-1` with the GPIO pin numbers that are desired. 
 
 #define ANALOG_ADC_VRX -1
 #define ANALOG_ADC_VRY -1
-
-// Reverse Button section
-#define REVERSE_LED_PIN -1
 
 // This is the I2C Display section (commonly known as the OLED display section).
 // In this section you can specify if a display as been enabled, which pins are assined to it, the block address and speed.
@@ -135,15 +151,17 @@
 // To disable the display you can change `HAS_I2C_DISPLAY` to `-1`.
 // The default `I2C_SDA_PIN` is `0`.
 // The defualt `I2C_SCL_PIN` is `1`.
-// The defualt `I2C_BLOCK` is `12c0`.
+// The defualt `I2C_BLOCK` is `12c0`.  
 // If you change the `I2C_SDA_PIN` and `I2C_SCL_PIN` pin mapping, you may need to change the `I2C_BLOCK` as well.
-// The defualt `I2C_SPEED` is `400000`.
+// The defualt `I2C_SPEED` is `400000`.  
 // This should be more than fast enough for most displays.
 // Some smaller displays (like 0.96" and 1.31") can go up to `800000` or even `1000000`.
 // The default `DISPLAY_FLIP` is `0`.
 // This can be changed to `1` to have the dispaly output flipped.
-// The default `DISPLAY_INVERY` is `0`.
+// The default `DISPLAY_INVERT` is `0`.
 // This can be changed to `1` to have the color on the display inverted.
+// The default `DISPLAY_SAVER_TIMEOUT` is `0`.
+// This can be changed to a number in minutes which will be the inactivity timeout for the display to turn off.
 // The default `BUTTON_LAYOUT` is `BUTTON_LAYOUT_STICK` which will show an arcade stick on the left hand side of the display.
 // There are seven options for `BUTTON_LAYOUT` currently:
 // 1 - BUTTON_LAYOUT_STICK - This is a basic joystick layout
@@ -166,7 +184,7 @@
 // 9 - BUTTON_LAYOUT_NOIR8 - This is the standard 8 button Noir layout
 // 10 - BUTTON_LAYOUT_KEYBOARDB - This is a WASD keyboard layout that is straight
 // 11 - BUTTON_LAYOUT_DANCEPADB - This is a dance pad layout (must be used with `BUTTON_LAYOUT_DANCEPADA` in `BUTTON_LAYOUT`)
-// The default `SPLASH_MODE` is `NOSPLASH`.
+// The default `SPLASH_MODE` is `NOSPLASH`.  
 // There are four options for `SPLASH_MODE` currently:
 // 1 - `STATICSPLASH` - This will display the static splash image
 // 2 - `CLOSEIN` - This will display the static splash image as a top and bottom coming together animation
@@ -181,7 +199,17 @@
 #define I2C_SPEED 400000
 #define DISPLAY_FLIP 0
 #define DISPLAY_INVERT 0
+#define DISPLAY_SAVER_TIMEOUT 0
 
+// I2C Analog ADS1219 Add-on Options
+#define I2C_ANALOG1219_SDA_PIN -1
+#define I2C_ANALOG1219_SCL_PIN -1
+#define I2C_ANALOG1219_BLOCK i2c0
+#define I2C_ANALOG1219_SPEED 400000
+#define I2C_ANALOG1219_ADDRESS 0x40
+
+// Reverse Button section
+#define REVERSE_LED_PIN -1
 #define REVERSE_UP_DEFAULT 1
 #define REVERSE_DOWN_DEFAULT 1
 #define REVERSE_LEFT_DEFAULT 1
@@ -200,7 +228,6 @@
 // INPUT_TEST     - Blinks whenever any input is made
 
 #define BOARD_LED_TYPE BOARD_LED_OFF
-#define BOARD_LED_PIN 25
 
 // Dual Directional Add-on Options
 
@@ -214,6 +241,15 @@
 // BOOTSEL Button Add-on setting
 #define BOOTSEL_BUTTON_MASK 0 // 0 means none, get other mask from GamepadState.h
 
+// This is the Buzzer Speaker section.  
+// In this section you can specify if Buzzer Speaker will be active, and, if active, which pin will be used for them.
+// The default is `BUZZER_ENABLED` which will turn the Buzzer Speaker off.
+// The default pin for Buzzer Speaker is `-1` which will turn the Buzzer Speaker off.  
+// The default volume for Buzzer Speaker is 100 (max).  
+#define BUZZER_ENABLED 0
+#define BUZZER_PIN -1
+#define BUZZER_VOLUME 100
+
 // Extra Button Add-on setting
 #define EXTRA_BUTTON_MASK 0 // 0 means none, get other mask from GamepadState.h
                             // For directions, use GAMEPAD_MASK_DU, GAMEPAD_MASK_DD, GAMEPAD_MASK_DL and GAMEPAD_MASK_DR
@@ -222,24 +258,43 @@
 // Keyboard Mapping Configuration
 // List of HID keycodes can be located here: https://github.com/hathach/tinyusb/blob/3623ba1884ddff23e9b64766cb6dd032f1425846/src/class/hid/hid.h#L356
 // Even for the modifier keys, HID_KEY entries should be used as the implementation expects those and will convert as necessary.
-#define KEY_DPAD_UP     HID_KEY_ARROW_UP      // UP
-#define KEY_DPAD_DOWN   HID_KEY_ARROW_DOWN    // DOWN
-#define KEY_DPAD_RIGHT  HID_KEY_ARROW_RIGHT   // RIGHT
-#define KEY_DPAD_LEFT   HID_KEY_ARROW_LEFT    // LEFT
-#define KEY_BUTTON_B1   HID_KEY_A             // B1 / A / B / Cross / 2 / K1
-#define KEY_BUTTON_B2   HID_KEY_B             // B2 / B / A / Circle / 3 / K2
-#define KEY_BUTTON_R2   HID_KEY_C             // R2 / RT / ZR / R2 / 8 / K3
-#define KEY_BUTTON_L2   HID_KEY_F             // L2 / LT / ZL / L2 / 7 / K4
-#define KEY_BUTTON_B3   HID_KEY_X             // B3 / X / Y / Square / 1 / P1
-#define KEY_BUTTON_B4   HID_KEY_Y             // B4 / Y / X / Triangle / 4 / P2
-#define KEY_BUTTON_R1   HID_KEY_Z             // R1 / RB / R / R1 / 6 / P3
-#define KEY_BUTTON_L1   HID_KEY_E             // L1 / LB / L / L1 / 5 / P4
-#define KEY_BUTTON_S1   HID_KEY_R             // S1 / Back / Minus / Select / 9 / Coin
-#define KEY_BUTTON_S2   HID_KEY_ENTER         // S2 / Start / Plus / Start / 10 / Start
-#define KEY_BUTTON_L3   HID_KEY_EQUAL         // L3 / LS / LS / L3 / 11 / LS
-#define KEY_BUTTON_R3   HID_KEY_MINUS         // R3 / RS / RS / R3 / 12 / RS
-#define KEY_BUTTON_A1   HID_KEY_M             // A1 / Guide / Home / PS / 13 / ~
-#define KEY_BUTTON_A2   HID_KEY_F2            // A2 / ~ / Capture / ~ / 14 / ~
+#define KEY_P1_DPAD_UP     HID_KEY_ARROW_UP      // UP
+#define KEY_P1_DPAD_DOWN   HID_KEY_ARROW_DOWN    // DOWN
+#define KEY_P1_DPAD_RIGHT  HID_KEY_ARROW_RIGHT   // RIGHT
+#define KEY_P1_DPAD_LEFT   HID_KEY_ARROW_LEFT    // LEFT
+#define KEY_P1_BUTTON_B1   HID_KEY_A             // B1 / A / B / Cross / 2 / K1
+#define KEY_P1_BUTTON_B2   HID_KEY_B             // B2 / B / A / Circle / 3 / K2
+#define KEY_P1_BUTTON_R2   HID_KEY_C             // R2 / RT / ZR / R2 / 8 / K3
+#define KEY_P1_BUTTON_L2   HID_KEY_F             // L2 / LT / ZL / L2 / 7 / K4
+#define KEY_P1_BUTTON_B3   HID_KEY_X             // B3 / X / Y / Square / 1 / P1
+#define KEY_P1_BUTTON_B4   HID_KEY_Y             // B4 / Y / X / Triangle / 4 / P2
+#define KEY_P1_BUTTON_R1   HID_KEY_Z             // R1 / RB / R / R1 / 6 / P3
+#define KEY_P1_BUTTON_L1   HID_KEY_E             // L1 / LB / L / L1 / 5 / P4
+#define KEY_P1_BUTTON_S1   HID_KEY_R             // S1 / Back / Minus / Select / 9 / Coin
+#define KEY_P1_BUTTON_S2   HID_KEY_ENTER         // S2 / Start / Plus / Start / 10 / Start
+#define KEY_P1_BUTTON_L3   HID_KEY_EQUAL         // L3 / LS / LS / L3 / 11 / LS
+#define KEY_P1_BUTTON_R3   HID_KEY_MINUS         // R3 / RS / RS / R3 / 12 / RS
+#define KEY_P1_BUTTON_A1   HID_KEY_M             // A1 / Guide / Home / PS / 13 / ~
+#define KEY_P1_BUTTON_A2   HID_KEY_F2            // A2 / ~ / Capture / ~ / 14 / ~
+
+#define KEY_P2_DPAD_UP     HID_KEY_KEYPAD_8      // UP
+#define KEY_P2_DPAD_DOWN   HID_KEY_KEYPAD_2      // DOWN
+#define KEY_P2_DPAD_RIGHT  HID_KEY_KEYPAD_6      // RIGHT
+#define KEY_P2_DPAD_LEFT   HID_KEY_KEYPAD_4      // LEFT
+#define KEY_P2_BUTTON_B1   HID_KEY_F1            // B1 / A / B / Cross / 2 / K1
+#define KEY_P2_BUTTON_B2   HID_KEY_F8            // B2 / B / A / Circle / 3 / K2
+#define KEY_P2_BUTTON_R2   HID_KEY_F3            // R2 / RT / ZR / R2 / 8 / K3
+#define KEY_P2_BUTTON_L2   HID_KEY_F             // L2 / LT / ZL / L2 / 7 / K4
+#define KEY_P2_BUTTON_B3   HID_KEY_F4            // B3 / X / Y / Square / 1 / P1
+#define KEY_P2_BUTTON_B4   HID_KEY_F5            // B4 / Y / X / Triangle / 4 / P2
+#define KEY_P2_BUTTON_R1   HID_KEY_F6            // R1 / RB / R / R1 / 6 / P3
+#define KEY_P2_BUTTON_L1   HID_KEY_E             // L1 / LB / L / L1 / 5 / P4
+#define KEY_P2_BUTTON_S1   HID_KEY_R             // S1 / Back / Minus / Select / 9 / Coin
+#define KEY_P2_BUTTON_S2   HID_KEY_SPACE         // S2 / Start / Plus / Start / 10 / Start
+#define KEY_P2_BUTTON_L3   HID_KEY_EQUAL         // L3 / LS / LS / L3 / 11 / LS
+#define KEY_P2_BUTTON_R3   HID_KEY_MINUS         // R3 / RS / RS / R3 / 12 / RS
+#define KEY_P2_BUTTON_A1   HID_KEY_M             // A1 / Guide / Home / PS / 13 / ~
+#define KEY_P2_BUTTON_A2   HID_KEY_F2            // A2 / ~ / Capture / ~ / 14 / ~
 
 // Hotkey Action Mapping
 // Find the list of hotkey actions in GamepadEnums.h

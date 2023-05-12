@@ -23,19 +23,19 @@ void ExtraButtonAddon::preprocess() {
 		if (extraButtonMap > (GAMEPAD_MASK_A2)) {
 			switch (extraButtonMap) {
 				case (GAMEPAD_MASK_DU):
-					gamepad->state.dpad |= GAMEPAD_MASK_UP;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_UP;
 					break;
 				case (GAMEPAD_MASK_DD):
-					gamepad->state.dpad |= GAMEPAD_MASK_DOWN;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_DOWN;
 					break;
 				case (GAMEPAD_MASK_DL):
-					gamepad->state.dpad |= GAMEPAD_MASK_LEFT;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_LEFT;
 					break;
 				case (GAMEPAD_MASK_DR):
-					gamepad->state.dpad |= GAMEPAD_MASK_RIGHT;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_RIGHT;
 					break;
 			}
 		}
-		else gamepad->state.buttons |= extraButtonMap;
+		else gamepad->p1State.buttons |= extraButtonMap;
 	}
 }

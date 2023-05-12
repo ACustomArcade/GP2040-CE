@@ -22,24 +22,45 @@ struct GamepadOptions
 	bool invertXAxis;
 	bool invertYAxis;
 
-	uint8_t keyDpadUp;
-	uint8_t keyDpadDown;
-	uint8_t keyDpadLeft;
-	uint8_t keyDpadRight;
-	uint8_t keyButtonB1;
-	uint8_t keyButtonB2;
-	uint8_t keyButtonB3;
-	uint8_t keyButtonB4;
-	uint8_t keyButtonL1;
-	uint8_t keyButtonR1;
-	uint8_t keyButtonL2;
-	uint8_t keyButtonR2;
-	uint8_t keyButtonS1;
-	uint8_t keyButtonS2;
-	uint8_t keyButtonL3;
-	uint8_t keyButtonR3;
-	uint8_t keyButtonA1;
-	uint8_t keyButtonA2;
+	// Player 1
+	uint8_t keyP1DpadUp;
+	uint8_t keyP1DpadDown;
+	uint8_t keyP1DpadLeft;
+	uint8_t keyP1DpadRight;
+	uint8_t keyP1ButtonB1;
+	uint8_t keyP1ButtonB2;
+	uint8_t keyP1ButtonB3;
+	uint8_t keyP1ButtonB4;
+	uint8_t keyP1ButtonL1;
+	uint8_t keyP1ButtonR1;
+	uint8_t keyP1ButtonL2;
+	uint8_t keyP1ButtonR2;
+	uint8_t keyP1ButtonS1;
+	uint8_t keyP1ButtonS2;
+	uint8_t keyP1ButtonL3;
+	uint8_t keyP1ButtonR3;
+	uint8_t keyP1ButtonA1;
+	uint8_t keyP1ButtonA2;
+
+	// Player 2
+	uint8_t keyP2DpadUp;
+	uint8_t keyP2DpadDown;
+	uint8_t keyP2DpadLeft;
+	uint8_t keyP2DpadRight;
+	uint8_t keyP2ButtonB1;
+	uint8_t keyP2ButtonB2;
+	uint8_t keyP2ButtonB3;
+	uint8_t keyP2ButtonB4;
+	uint8_t keyP2ButtonL1;
+	uint8_t keyP2ButtonR1;
+	uint8_t keyP2ButtonL2;
+	uint8_t keyP2ButtonR2;
+	uint8_t keyP2ButtonS1;
+	uint8_t keyP2ButtonS2;
+	uint8_t keyP2ButtonL3;
+	uint8_t keyP2ButtonR3;
+	uint8_t keyP2ButtonA1;
+	uint8_t keyP2ButtonA2;
 
 	GamepadHotkeyEntry hotkeyF1Up;
 	GamepadHotkeyEntry hotkeyF1Down;

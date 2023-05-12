@@ -148,7 +148,8 @@ void GP2040::run() {
 		addons.ProcessAddons(ADDON_PROCESS::CORE0_INPUT);
 
 		// Copy Processed Gamepad for Core1 (race condition otherwise)
-		memcpy(&processedGamepad->state, &gamepad->state, sizeof(GamepadState));
+		memcpy(&processedGamepad->p1State, &gamepad->p1State, sizeof(GamepadState));
+		memcpy(&processedGamepad->p2State, &gamepad->p2State, sizeof(GamepadState));
 
 		// USB FEATURES : Send/Get USB Features (including Player LEDs on X-Input)
 		send_report(gamepad->getReport(), gamepad->getReportSize());
@@ -175,19 +176,19 @@ GP2040::BootAction GP2040::getBootAction() {
 				Gamepad * gamepad = Storage::getInstance().GetGamepad();
 				gamepad->read();
 
-				if (gamepad->pressedF1() && gamepad->pressedUp()) {
+				if (gamepad->pressedF1() && gamepad->pressedP1Up()) {
 					return BootAction::ENTER_USB_MODE;
-				} else if (gamepad->pressedS2()) {
+				} else if (gamepad->pressedP1S2()) {
 					return BootAction::ENTER_WEBCONFIG_MODE;
-				} else if (gamepad->pressedB3()) { // P1
+				} else if (gamepad->pressedP1B3()) { // P1
 					return BootAction::SET_INPUT_MODE_HID;
-				} else if (gamepad->pressedB4()) { // P2
+				} else if (gamepad->pressedP1B4()) { // P2
 					return BootAction::SET_INPUT_MODE_PS4;
-				} else if (gamepad->pressedB1()) { // K1
+				} else if (gamepad->pressedP1B1()) { // K1
 					return BootAction::SET_INPUT_MODE_SWITCH;
-				} else if (gamepad->pressedB2()) { // K2
+				} else if (gamepad->pressedP1B2()) { // K2
 					return BootAction::SET_INPUT_MODE_XINPUT;
-				} else if (gamepad->pressedR2()) { // K3
+				} else if (gamepad->pressedP1R2()) { // K3
 					return BootAction::SET_INPUT_MODE_KEYBOARD;
 				} else {
 					return BootAction::NONE;
@@ -212,7 +213,7 @@ void GP2040::WebConfigHotkey::process(Gamepad* gamepad, bool configMode) {
 	// We do this to avoid detecting buttons that are held during the boot process. In particular we want to avoid
 	// oscillating between webconfig and default mode when the user keeps holding the hotkey buttons.
 	if (!active) {
-		if (gamepad->state.buttons == 0) {
+		if (gamepad->p1State.buttons == 0) {
 			if (is_nil_time(noButtonsPressedTimeout)) {
 				noButtonsPressedTimeout = make_timeout_time_us(WEBCONFIG_HOTKEY_ACTIVATION_TIME_MS);
 			}
@@ -224,7 +225,7 @@ void GP2040::WebConfigHotkey::process(Gamepad* gamepad, bool configMode) {
 			noButtonsPressedTimeout = nil_time;
 		}
 	} else {
-		if (gamepad->state.buttons == webConfigHotkeyMask) {
+		if (gamepad->p1State.buttons == webConfigHotkeyMask) {
 			if (is_nil_time(webConfigHotkeyHoldTimeout)) {
 				webConfigHotkeyHoldTimeout = make_timeout_time_ms(WEBCONFIG_HOTKEY_HOLD_TIME_MS);
 			}

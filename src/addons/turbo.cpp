@@ -81,8 +81,10 @@ void TurboInput::setup()
     debounceMS = gamepad->debounceMS;
     turboDialIncrements = 0xFFF / (TURBO_SHOT_MAX - TURBO_SHOT_MIN); // 12-bit ADC
     incrementValue = 0;
-    lastPressed = 0;
-    lastDpad = 0;
+    p1LastPressed = 0;
+    p1LastDpad = 0;
+    p2LastPressed = 0;
+    p2LastDpad = 0;
     uIntervalMS = (uint32_t)(1000.0 / turboShotCount);
     bTurboState = false;
     bTurboFlicker = false;
@@ -132,8 +134,10 @@ void TurboInput::process()
 {
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
     const AddonOptions& options = Storage::getInstance().getAddonOptions();
-    uint16_t buttonsPressed = gamepad->state.buttons & TURBO_BUTTON_MASK;
-    uint16_t dpadPressed = gamepad->state.dpad & GAMEPAD_MASK_DPAD;
+    uint16_t p1ButtonsPressed = gamepad->p1State.buttons & TURBO_BUTTON_MASK;
+    uint16_t p1DpadPressed = gamepad->p1State.dpad & GAMEPAD_MASK_DPAD;
+    uint16_t p2ButtonsPressed = gamepad->p2State.buttons & TURBO_BUTTON_MASK;
+    uint16_t p2DpadPressed = gamepad->p2State.dpad & GAMEPAD_MASK_DPAD;
 
     // Get Turbo Button States
     read(options);
@@ -141,29 +145,42 @@ void TurboInput::process()
 
     // Set TURBO Enable Buttons
     if (bTurboState) {
-        if (buttonsPressed && (lastPressed != buttonsPressed)) {
-            turboButtonsPressed ^= buttonsPressed; // Toggle Turbo
+        if (p1ButtonsPressed && (p1LastPressed != p1ButtonsPressed)) {
+            turboButtonsPressed ^= p1ButtonsPressed; // Toggle Turbo
             if ( options.shmupMode == 1 ) {
                 turboButtonsPressed |= alwaysEnabled;  // SHMUP Always-on Buttons Set
             }
             // Turn off button once turbo is toggled
-            gamepad->state.buttons &= ~(TURBO_BUTTON_MASK);
+            gamepad->p1State.buttons &= ~(TURBO_BUTTON_MASK);
         }
-        if (dpadPressed & GAMEPAD_MASK_DOWN && (lastDpad != dpadPressed)) {
+        if (p2ButtonsPressed && (p2LastPressed != p2ButtonsPressed)) {
+            turboButtonsPressed ^= p2ButtonsPressed; // Toggle Turbo
+            if ( options.shmupMode == 1 ) {
+                turboButtonsPressed |= alwaysEnabled;  // SHMUP Always-on Buttons Set
+            }
+            // Turn off button once turbo is toggled
+            gamepad->p2State.buttons &= ~(TURBO_BUTTON_MASK);
+        }
+
+        if (p1DpadPressed & GAMEPAD_MASK_DOWN && (p1LastDpad != p1DpadPressed)) {
             if ( options.turboShotCount > TURBO_SHOT_MIN ) { // can't go lower than 2-shots per second
                 updateTurboShotCount(options.turboShotCount - 1);
             }
-        } else if ( dpadPressed & GAMEPAD_MASK_UP && (lastDpad != dpadPressed)) {
+        } else if ( p1DpadPressed & GAMEPAD_MASK_UP && (p2LastDpad != p1DpadPressed)) {
             if ( options.turboShotCount < TURBO_SHOT_MAX ) { // can't go higher than 60-shots per second
                 updateTurboShotCount(options.turboShotCount + 1);
             }
         }
-        lastPressed = buttonsPressed; // save last pressed
-        lastDpad = dpadPressed;
+        p1LastPressed = p1ButtonsPressed; // save last pressed
+        p1LastDpad = p1DpadPressed;
+        p2LastPressed = p2ButtonsPressed; // save last pressed
+        p2LastDpad = p2DpadPressed;
         return; // Holding TURBO cancels turbo functionality
     } else {
-        lastPressed = 0; // disable last pressed
-        lastDpad = 0; // disable last dpad
+        p1LastPressed = 0; // disable last pressed
+        p1LastDpad = 0; // disable last dpad
+        p2LastPressed = 0; // disable last pressed
+        p2LastDpad = 0; // disable last dpad
     }
 
     // Use the dial to modify our turbo shot speed (don't save on dial modify)
@@ -178,7 +195,7 @@ void TurboInput::process()
 
     // Set TURBO LED if a button is going or turbo is too fast
     if ( options.pinTurboLED != (uint8_t)-1 ) {
-        if ((gamepad->state.buttons & turboButtonsPressed) && !bTurboFlicker) {
+        if (((gamepad->p1State.buttons || gamepad->p2State.buttons) & turboButtonsPressed) && !bTurboFlicker) {
             gpio_put(options.pinTurboLED, 0);
         } else {
             gpio_put(options.pinTurboLED, 1);
@@ -187,15 +204,20 @@ void TurboInput::process()
 
     // set charge buttons (mix mode)
     if ( options.shmupMode == 1 ) {
-        gamepad->state.buttons |= chargeState;  // Inject Mask into button states
+        // Inject Mask into button states
+        gamepad->p1State.buttons |= chargeState;
+        gamepad->p2State.buttons |= chargeState;
     }
 
     // Disable button during turbo flicker
     if (bTurboFlicker) {
         if ( options.shmupMode && options.shmupMixMode == CHARGE_PRIORITY) {
-            gamepad->state.buttons &= ~(turboButtonsPressed & ~(chargeState));  // Do not flicker charge buttons
+            // Do not flicker charge buttons
+            gamepad->p1State.buttons &= ~(turboButtonsPressed & ~(chargeState));
+            gamepad->p2State.buttons &= ~(turboButtonsPressed & ~(chargeState));
         } else {
-            gamepad->state.buttons &= ~(turboButtonsPressed);
+            gamepad->p1State.buttons &= ~(turboButtonsPressed);
+            gamepad->p2State.buttons &= ~(turboButtonsPressed);
         }
     }
 

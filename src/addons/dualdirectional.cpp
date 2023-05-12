@@ -69,23 +69,23 @@ void DualDirectionalInput::preprocess()
  	// Need to invert since we're using pullups
     dualState = 0;
     if ( pinDualDirUp != (uint8_t)-1 ) {
-        dualState |= (!gpio_get(pinDualDirUp) ? gamepad->mapDpadUp->buttonMask : 0);
+        dualState |= (!gpio_get(pinDualDirUp) ? gamepad->mapP1DpadUp->buttonMask : 0);
     }
     if ( pinDualDirDown != (uint8_t)-1 ) {
-        dualState |= (!gpio_get(pinDualDirDown) ? gamepad->mapDpadDown->buttonMask : 0);
+        dualState |= (!gpio_get(pinDualDirDown) ? gamepad->mapP1DpadDown->buttonMask : 0);
     }
     if ( pinDualDirLeft != (uint8_t)-1 ) {
-        dualState |= (!gpio_get(pinDualDirLeft) ? gamepad->mapDpadLeft->buttonMask  : 0);
+        dualState |= (!gpio_get(pinDualDirLeft) ? gamepad->mapP1DpadLeft->buttonMask  : 0);
     }
     if ( pinDualDirRight != (uint8_t)-1 ) {
-        dualState |= (!gpio_get(pinDualDirRight) ? gamepad->mapDpadRight->buttonMask : 0);
+        dualState |= (!gpio_get(pinDualDirRight) ? gamepad->mapP1DpadRight->buttonMask : 0);
     }
 
     // Debounce our directional pins
     debounce();
 
     // Convert gamepad from process() output to uint8 value
-    uint8_t gamepadState = gamepad->state.dpad;
+    uint8_t gamepadState = gamepad->p1State.dpad;
     const SOCDMode& socdMode = getSOCDMode(gamepad->options);
 
     // Combined Mode
@@ -116,7 +116,7 @@ void DualDirectionalInput::preprocess()
         }
     }
 
-    gamepad->state.dpad = gamepadState;
+    gamepad->p1State.dpad = gamepadState;
 }
 
 void DualDirectionalInput::process()
@@ -128,7 +128,7 @@ void DualDirectionalInput::process()
 
     // If we're in mixed mode
     if (combineMode == DUAL_COMBINE_MODE_MIXED) {
-        uint8_t gamepadDpad = gpadToBinary(gamepad->options.dpadMode, gamepad->state);
+        uint8_t gamepadDpad = gpadToBinary(gamepad->options.dpadMode, gamepad->p1State);
         // Up-Win or Neutral Modify AFTER SOCD(gamepad), Last-Win Modifies BEFORE SOCD(gamepad)
         if ( socdMode == SOCD_MODE_UP_PRIORITY ||
                 socdMode == SOCD_MODE_NEUTRAL ) {
@@ -141,7 +141,7 @@ void DualDirectionalInput::process()
                 OverrideGamepad(gamepad, gamepad->options.dpadMode, dualOut);
             }
         } else if (socdMode == SOCD_MODE_BYPASS) {
-            OverrideGamepad(gamepad, gamepad->options.dpadMode, dualOut | gamepad->state.dpad);
+            OverrideGamepad(gamepad, gamepad->options.dpadMode, dualOut | gamepad->p1State.dpad);
         }
     } else { // We are not mixed mode, don't change dual output
         dualOut = dualState;
@@ -156,7 +156,7 @@ void DualDirectionalInput::process()
             // need to be SOCD cleaned first
             // this also avoids accidentally masking gamepad inputs with the lack of dual inputs
             if (gamepad->options.dpadMode == options.dualDirDpadMode) {
-                uint8_t gamepadDpad = gpadToBinary(gamepad->options.dpadMode, gamepad->state);
+                uint8_t gamepadDpad = gpadToBinary(gamepad->options.dpadMode, gamepad->p1State);
                 dualOut = SOCDGamepadClean(dualOut | gamepadDpad, gamepad->options.socdMode == SOCD_MODE_SECOND_INPUT_PRIORITY);
             }
             OverrideGamepad(gamepad, options.dualDirDpadMode, dualOut);
@@ -167,15 +167,15 @@ void DualDirectionalInput::process()
 void DualDirectionalInput::OverrideGamepad(Gamepad * gamepad, DpadMode mode, uint8_t dpad) {
     switch (mode) {
         case DPAD_MODE_LEFT_ANALOG:
-            gamepad->state.lx = dpadToAnalogX(dpad);
-            gamepad->state.ly = dpadToAnalogY(dpad);
+            gamepad->p1State.lx = dpadToAnalogX(dpad);
+            gamepad->p1State.ly = dpadToAnalogY(dpad);
             break;
         case DPAD_MODE_RIGHT_ANALOG:
-            gamepad->state.rx = dpadToAnalogX(dpad);
-            gamepad->state.ry = dpadToAnalogY(dpad);
+            gamepad->p1State.rx = dpadToAnalogX(dpad);
+            gamepad->p1State.ry = dpadToAnalogY(dpad);
             break;
         case DPAD_MODE_DIGITAL:
-            gamepad->state.dpad = dpad;
+            gamepad->p1State.dpad = dpad;
             break;
     }
 }

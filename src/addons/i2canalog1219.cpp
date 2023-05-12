@@ -52,9 +52,9 @@ void I2CAnalog1219Input::process()
     }
 
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
-    gamepad->state.lx = (uint16_t)(65535.f*pins.A[0]);
-    gamepad->state.ly = (uint16_t)(65535.f*pins.A[1]);
-    gamepad->state.rx = (uint16_t)(65535.f*pins.A[2]);
-    gamepad->state.ry = (uint16_t)(65535.f*pins.A[3]);
+    gamepad->p1State.lx = (uint16_t)(65535.f*pins.A[0]);
+    gamepad->p1State.ly = (uint16_t)(65535.f*pins.A[1]);
+    gamepad->p1State.rx = (uint16_t)(65535.f*pins.A[2]);
+    gamepad->p1State.ry = (uint16_t)(65535.f*pins.A[3]);
 
 }

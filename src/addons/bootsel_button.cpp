@@ -50,19 +50,19 @@ void BootselButtonAddon::preprocess() {
 		if (bootselButtonMap > (GAMEPAD_MASK_A2)) {
 			switch (bootselButtonMap) {
 				case (1U << 14):
-					gamepad->state.dpad |= GAMEPAD_MASK_UP;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_UP;
 					break;
 				case (1U << 15):
-					gamepad->state.dpad |= GAMEPAD_MASK_DOWN;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_DOWN;
 					break;
 				case (1U << 16):
-					gamepad->state.dpad |= GAMEPAD_MASK_LEFT;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_LEFT;
 					break;
 				case (1U << 17):
-					gamepad->state.dpad |= GAMEPAD_MASK_RIGHT;
+					gamepad->p1State.dpad |= GAMEPAD_MASK_RIGHT;
 					break;
 			}
 		}
-		else gamepad->state.buttons |= bootselButtonMap;
+		else gamepad->p1State.buttons |= bootselButtonMap;
 	}
 }

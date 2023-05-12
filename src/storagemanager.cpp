@@ -75,24 +75,45 @@ void Storage::setDefaultBoardOptions()
 {
 	// Set GP2040 version string and 0 mem after
 	boardOptions.hasBoardOptions   = false;
-	boardOptions.pinDpadUp         = PIN_DPAD_UP;
-	boardOptions.pinDpadDown       = PIN_DPAD_DOWN;
-	boardOptions.pinDpadLeft       = PIN_DPAD_LEFT;
-	boardOptions.pinDpadRight      = PIN_DPAD_RIGHT;
-	boardOptions.pinButtonB1       = PIN_BUTTON_B1;
-	boardOptions.pinButtonB2       = PIN_BUTTON_B2;
-	boardOptions.pinButtonB3       = PIN_BUTTON_B3;
-	boardOptions.pinButtonB4       = PIN_BUTTON_B4;
-	boardOptions.pinButtonL1       = PIN_BUTTON_L1;
-	boardOptions.pinButtonR1       = PIN_BUTTON_R1;
-	boardOptions.pinButtonL2       = PIN_BUTTON_L2;
-	boardOptions.pinButtonR2       = PIN_BUTTON_R2;
-	boardOptions.pinButtonS1       = PIN_BUTTON_S1;
-	boardOptions.pinButtonS2       = PIN_BUTTON_S2;
-	boardOptions.pinButtonL3       = PIN_BUTTON_L3;
-	boardOptions.pinButtonR3       = PIN_BUTTON_R3;
-	boardOptions.pinButtonA1       = PIN_BUTTON_A1;
-	boardOptions.pinButtonA2       = PIN_BUTTON_A2;
+	boardOptions.pinP1DpadUp         = PIN_P1_DPAD_UP;
+	boardOptions.pinP1DpadDown       = PIN_P1_DPAD_DOWN;
+	boardOptions.pinP1DpadLeft       = PIN_P1_DPAD_LEFT;
+	boardOptions.pinP1DpadRight      = PIN_P1_DPAD_RIGHT;
+	boardOptions.pinP1ButtonB1       = PIN_P1_BUTTON_B1;
+	boardOptions.pinP1ButtonB2       = PIN_P1_BUTTON_B2;
+	boardOptions.pinP1ButtonB3       = PIN_P1_BUTTON_B3;
+	boardOptions.pinP1ButtonB4       = PIN_P1_BUTTON_B4;
+	boardOptions.pinP1ButtonL1       = PIN_P1_BUTTON_L1;
+	boardOptions.pinP1ButtonR1       = PIN_P1_BUTTON_R1;
+	boardOptions.pinP1ButtonL2       = PIN_P1_BUTTON_L2;
+	boardOptions.pinP1ButtonR2       = PIN_P1_BUTTON_R2;
+	boardOptions.pinP1ButtonS1       = PIN_P1_BUTTON_S1;
+	boardOptions.pinP1ButtonS2       = PIN_P1_BUTTON_S2;
+	boardOptions.pinP1ButtonL3       = PIN_P1_BUTTON_L3;
+	boardOptions.pinP1ButtonR3       = PIN_P1_BUTTON_R3;
+	boardOptions.pinP1ButtonA1       = PIN_P1_BUTTON_A1;
+	boardOptions.pinP1ButtonA2       = PIN_P1_BUTTON_A2;
+	boardOptions.pinP2DpadUp         = PIN_P2_DPAD_UP;
+	boardOptions.pinP2DpadDown       = PIN_P2_DPAD_DOWN;
+	boardOptions.pinP2DpadLeft       = PIN_P2_DPAD_LEFT;
+	boardOptions.pinP2DpadRight      = PIN_P2_DPAD_RIGHT;
+	boardOptions.pinP2ButtonB1       = PIN_P2_BUTTON_B1;
+	boardOptions.pinP2ButtonB2       = PIN_P2_BUTTON_B2;
+	boardOptions.pinP2ButtonB3       = PIN_P2_BUTTON_B3;
+	boardOptions.pinP2ButtonB4       = PIN_P2_BUTTON_B4;
+	boardOptions.pinP2ButtonL1       = PIN_P2_BUTTON_L1;
+	boardOptions.pinP2ButtonR1       = PIN_P2_BUTTON_R1;
+	boardOptions.pinP2ButtonL2       = PIN_P2_BUTTON_L2;
+	boardOptions.pinP2ButtonR2       = PIN_P2_BUTTON_R2;
+	boardOptions.pinP2ButtonS1       = PIN_P2_BUTTON_S1;
+	boardOptions.pinP2ButtonS2       = PIN_P2_BUTTON_S2;
+	boardOptions.pinP2ButtonL3       = PIN_P2_BUTTON_L3;
+	boardOptions.pinP2ButtonR3       = PIN_P2_BUTTON_R3;
+	boardOptions.pinP2ButtonA1       = PIN_P2_BUTTON_A1;
+	boardOptions.pinP2ButtonA2       = PIN_P2_BUTTON_A2;
+
+
+
 	boardOptions.buttonLayout      = BUTTON_LAYOUT;
 	boardOptions.buttonLayoutRight = BUTTON_LAYOUT_RIGHT;
 	boardOptions.splashMode        = SPLASH_MODE;

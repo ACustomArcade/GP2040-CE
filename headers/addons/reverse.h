@@ -31,10 +31,15 @@ private:
 
 	uint8_t pinLED;
 
-	GamepadButtonMapping *mapDpadUp;
-	GamepadButtonMapping *mapDpadDown;
-	GamepadButtonMapping *mapDpadLeft;
-	GamepadButtonMapping *mapDpadRight;
+	GamepadButtonMapping *mapP1DpadUp;
+	GamepadButtonMapping *mapP1DpadDown;
+	GamepadButtonMapping *mapP1DpadLeft;
+	GamepadButtonMapping *mapP1DpadRight;
+
+	GamepadButtonMapping *mapP2DpadUp;
+	GamepadButtonMapping *mapP2DpadDown;
+	GamepadButtonMapping *mapP2DpadLeft;
+	GamepadButtonMapping *mapP2DpadRight;
 
 	bool invertXAxis;
 	bool invertYAxis;

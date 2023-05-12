@@ -41,6 +41,8 @@ void AnalogInput::process()
         adc_y = ANALOG_CENTER;
 
     // Convert to 16-bit value
-    gamepad->state.lx = (uint16_t)(65535.0f*adc_x);
-    gamepad->state.ly = (uint16_t)(65535.0f*adc_y);
+    gamepad->p1State.lx = (uint16_t)(65535.0f*adc_x);
+    gamepad->p1State.ly = (uint16_t)(65535.0f*adc_y);
+    gamepad->p2State.lx = (uint16_t)(65535.0f*adc_x);
+    gamepad->p2State.ly = (uint16_t)(65535.0f*adc_y);
 }

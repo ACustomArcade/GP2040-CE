@@ -108,37 +108,37 @@ void WiiExtensionInput::process() {
 
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
 
-    gamepad->state.lx = leftX;
-    gamepad->state.ly = leftY;
-    gamepad->state.rx = rightX;
-    gamepad->state.ry = rightY;
+    gamepad->p1State.lx = leftX;
+    gamepad->p1State.ly = leftY;
+    gamepad->p1State.rx = rightX;
+    gamepad->p1State.ry = rightY;
 
     if (wii->extensionType == WII_EXTENSION_CLASSIC) {
         gamepad->hasAnalogTriggers = true;
-        gamepad->state.lt = triggerLeft;
-        gamepad->state.rt = triggerRight;
+        gamepad->p1State.lt = triggerLeft;
+        gamepad->p1State.rt = triggerRight;
     } else {
         gamepad->hasAnalogTriggers = false;
     }
 
-    if (buttonC) gamepad->state.buttons |= GAMEPAD_MASK_B1;
-    if (buttonZ) gamepad->state.buttons |= GAMEPAD_MASK_B2;
+    if (buttonC) gamepad->p1State.buttons |= GAMEPAD_MASK_B1;
+    if (buttonZ) gamepad->p1State.buttons |= GAMEPAD_MASK_B2;
 
-    if (buttonA) gamepad->state.buttons |= GAMEPAD_MASK_B2;
-    if (buttonB) gamepad->state.buttons |= GAMEPAD_MASK_B1;
-    if (buttonX) gamepad->state.buttons |= GAMEPAD_MASK_B4;
-    if (buttonY) gamepad->state.buttons |= GAMEPAD_MASK_B3;
-    if (buttonL) gamepad->state.buttons |= GAMEPAD_MASK_L1;
-    if (buttonZL) gamepad->state.buttons |= GAMEPAD_MASK_L2;
-    if (buttonR) gamepad->state.buttons |= GAMEPAD_MASK_R1;
-    if (buttonZR) gamepad->state.buttons |= GAMEPAD_MASK_R2;
-    if (buttonSelect) gamepad->state.buttons |= GAMEPAD_MASK_S1;
-    if (buttonStart) gamepad->state.buttons |= GAMEPAD_MASK_S2;
-    if (buttonHome) gamepad->state.buttons |= GAMEPAD_MASK_A1;
-    if (dpadUp) gamepad->state.dpad |= GAMEPAD_MASK_UP;
-    if (dpadDown) gamepad->state.dpad |= GAMEPAD_MASK_DOWN;
-    if (dpadLeft) gamepad->state.dpad |= GAMEPAD_MASK_LEFT;
-    if (dpadRight) gamepad->state.dpad |= GAMEPAD_MASK_RIGHT;
+    if (buttonA) gamepad->p1State.buttons |= GAMEPAD_MASK_B2;
+    if (buttonB) gamepad->p1State.buttons |= GAMEPAD_MASK_B1;
+    if (buttonX) gamepad->p1State.buttons |= GAMEPAD_MASK_B4;
+    if (buttonY) gamepad->p1State.buttons |= GAMEPAD_MASK_B3;
+    if (buttonL) gamepad->p1State.buttons |= GAMEPAD_MASK_L1;
+    if (buttonZL) gamepad->p1State.buttons |= GAMEPAD_MASK_L2;
+    if (buttonR) gamepad->p1State.buttons |= GAMEPAD_MASK_R1;
+    if (buttonZR) gamepad->p1State.buttons |= GAMEPAD_MASK_R2;
+    if (buttonSelect) gamepad->p1State.buttons |= GAMEPAD_MASK_S1;
+    if (buttonStart) gamepad->p1State.buttons |= GAMEPAD_MASK_S2;
+    if (buttonHome) gamepad->p1State.buttons |= GAMEPAD_MASK_A1;
+    if (dpadUp) gamepad->p1State.dpad |= GAMEPAD_MASK_UP;
+    if (dpadDown) gamepad->p1State.dpad |= GAMEPAD_MASK_DOWN;
+    if (dpadLeft) gamepad->p1State.dpad |= GAMEPAD_MASK_LEFT;
+    if (dpadRight) gamepad->p1State.dpad |= GAMEPAD_MASK_RIGHT;
 }
 
 uint16_t WiiExtensionInput::map(uint16_t x, uint16_t in_min, uint16_t in_max, uint16_t out_min, uint16_t out_max) {

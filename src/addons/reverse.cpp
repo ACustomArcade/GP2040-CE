@@ -31,10 +31,14 @@ void ReverseInput::setup()
     actionRight = options.reverseActionDown;
 
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
-	mapDpadUp    = gamepad->mapDpadUp;
-	mapDpadDown  = gamepad->mapDpadDown;
-	mapDpadLeft  = gamepad->mapDpadLeft;
-	mapDpadRight = gamepad->mapDpadRight;
+	mapP1DpadUp    = gamepad->mapP1DpadUp;
+	mapP1DpadDown  = gamepad->mapP1DpadDown;
+	mapP1DpadLeft  = gamepad->mapP1DpadLeft;
+	mapP1DpadRight = gamepad->mapP1DpadRight;
+    mapP2DpadUp    = gamepad->mapP2DpadUp;
+	mapP2DpadDown  = gamepad->mapP2DpadDown;
+	mapP2DpadLeft  = gamepad->mapP2DpadLeft;
+	mapP2DpadRight = gamepad->mapP2DpadRight;
 
     invertXAxis = gamepad->options.invertXAxis;
     invertYAxis = gamepad->options.invertYAxis;
@@ -62,11 +66,18 @@ void ReverseInput::process()
     uint32_t values = ~gpio_get_all();
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
 
-    gamepad->state.dpad = 0
-        | input(values & mapDpadUp->pinMask,    mapDpadUp->buttonMask,      mapDpadDown->buttonMask,    actionUp,       invertYAxis)
-        | input(values & mapDpadDown->pinMask,  mapDpadDown->buttonMask,    mapDpadUp->buttonMask,      actionDown,     invertYAxis)
-        | input(values & mapDpadLeft->pinMask,  mapDpadLeft->buttonMask,    mapDpadRight->buttonMask,   actionLeft,     invertXAxis)
-        | input(values & mapDpadRight->pinMask, mapDpadRight->buttonMask,   mapDpadLeft->buttonMask,    actionRight,    invertXAxis)
+    gamepad->p1State.dpad = 0
+        | input(values & mapP1DpadUp->pinMask,    mapP1DpadUp->buttonMask,      mapP1DpadDown->buttonMask,    actionUp,       invertYAxis)
+        | input(values & mapP1DpadDown->pinMask,  mapP1DpadDown->buttonMask,    mapP1DpadUp->buttonMask,      actionDown,     invertYAxis)
+        | input(values & mapP1DpadLeft->pinMask,  mapP1DpadLeft->buttonMask,    mapP1DpadRight->buttonMask,   actionLeft,     invertXAxis)
+        | input(values & mapP1DpadRight->pinMask, mapP1DpadRight->buttonMask,   mapP1DpadLeft->buttonMask,    actionRight,    invertXAxis)
+    ;
+
+    gamepad->p2State.dpad = 0
+        | input(values & mapP2DpadUp->pinMask,    mapP2DpadUp->buttonMask,      mapP2DpadDown->buttonMask,    actionUp,       invertYAxis)
+        | input(values & mapP2DpadDown->pinMask,  mapP2DpadDown->buttonMask,    mapP2DpadUp->buttonMask,      actionDown,     invertYAxis)
+        | input(values & mapP2DpadLeft->pinMask,  mapP2DpadLeft->buttonMask,    mapP2DpadRight->buttonMask,   actionLeft,     invertXAxis)
+        | input(values & mapP2DpadRight->pinMask, mapP2DpadRight->buttonMask,   mapP2DpadLeft->buttonMask,    actionRight,    invertXAxis)
     ;
 
     if (pinLED != (uint8_t)-1) {

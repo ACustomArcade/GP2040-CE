@@ -132,7 +132,7 @@ void NeoPicoLEDAddon::process()
 		as.HandleEvent(action);
 	}
 
-	uint32_t buttonState = gamepad->state.dpad << 16 | gamepad->state.buttons;
+	uint32_t buttonState = gamepad->p1State.dpad << 16 | gamepad->p1State.buttons;
 	vector<Pixel> pressed;
 	for (auto row : matrix.pixels)
 	{
@@ -494,45 +494,45 @@ AnimationHotkey animationHotkeys(Gamepad *gamepad)
 
 	if (gamepad->pressedF1())
 	{
-		if (gamepad->pressedB3())
+		if (gamepad->pressedP1B3())
 		{
 			action = HOTKEY_LEDS_ANIMATION_UP;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_B3 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_B3 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedB1())
+		else if (gamepad->pressedP1B1())
 		{
 			action = HOTKEY_LEDS_ANIMATION_DOWN;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_B1 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_B1 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedB4())
+		else if (gamepad->pressedP1B4())
 		{
 			action = HOTKEY_LEDS_BRIGHTNESS_UP;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_B4 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_B4 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedB2())
+		else if (gamepad->pressedP1B2())
 		{
 			action = HOTKEY_LEDS_BRIGHTNESS_DOWN;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_B2 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_B2 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedR1())
+		else if (gamepad->pressedP1R1())
 		{
 			action = HOTKEY_LEDS_PARAMETER_UP;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_R1 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_R1 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedR2())
+		else if (gamepad->pressedP1R2())
 		{
 			action = HOTKEY_LEDS_PARAMETER_DOWN;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_R2 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_R2 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedL1())
+		else if (gamepad->pressedP1L1())
 		{
 			action = HOTKEY_LEDS_PRESS_PARAMETER_UP;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_L1 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_L1 | gamepad->f1Mask);
 		}
-		else if (gamepad->pressedL2())
+		else if (gamepad->pressedP1L2())
 		{
 			action = HOTKEY_LEDS_PRESS_PARAMETER_DOWN;
-			gamepad->state.buttons &= ~(GAMEPAD_MASK_L2 | gamepad->f1Mask);
+			gamepad->p1State.buttons &= ~(GAMEPAD_MASK_L2 | gamepad->f1Mask);
 		}
 	}
 
