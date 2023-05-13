@@ -301,8 +301,8 @@ void Gamepad::read()
 }
 
 void Gamepad::debounce() {
-	debouncer.debounce(&p1State);
-	debouncer.debounce(&p2State);
+	debouncer.debounce(&p1State, &debouncer.p1DebounceState);
+	debouncer.debounce(&p2State, &debouncer.p2DebounceState);
 }
 
 void Gamepad::save()
@@ -624,7 +624,9 @@ KeyboardReport *Gamepad::getKeyboardReport()
 	if(pressedP1Down())   { pressKey(options.keyP1DpadDown); }
 	if(pressedP1Left())	  { pressKey(options.keyP1DpadLeft); }
 	if(pressedP1Right())  { pressKey(options.keyP1DpadRight); }
-	if(pressedP1B1()) 	  { pressKey(options.keyP1ButtonB1); }
+	if(pressedP1B1()) 	  {
+		pressKey(options.keyP1ButtonB1);
+	}
 	if(pressedP1B2()) 	  { pressKey(options.keyP1ButtonB2); }
 	if(pressedP1B3()) 	  { pressKey(options.keyP1ButtonB3); }
 	if(pressedP1B4()) 	  { pressKey(options.keyP1ButtonB4); }
@@ -642,7 +644,9 @@ KeyboardReport *Gamepad::getKeyboardReport()
 	if(pressedP2Down())   { pressKey(options.keyP2DpadDown); }
 	if(pressedP2Left())	  { pressKey(options.keyP2DpadLeft); }
 	if(pressedP2Right())  { pressKey(options.keyP2DpadRight); }
-	if(pressedP2B1()) 	  { pressKey(options.keyP2ButtonB1); }
+	if(pressedP2B1()) 	  {
+		pressKey(options.keyP2ButtonB1);
+	}
 	if(pressedP2B2()) 	  { pressKey(options.keyP2ButtonB2); }
 	if(pressedP2B3()) 	  { pressKey(options.keyP2ButtonB3); }
 	if(pressedP2B4()) 	  { pressKey(options.keyP2ButtonB4); }

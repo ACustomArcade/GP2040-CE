@@ -5,28 +5,28 @@
 
 #include "gamepad/GamepadDebouncer.h"
 
-void GamepadDebouncer::debounce(GamepadState *state)
+void GamepadDebouncer::debounce(GamepadState *state, GamepadState *debounceState)
 {
 	uint32_t now = getMillis();
 
 	for (int i = 0; i < 4; i++)
 	{
-		if ((debounceState.dpad & dpadMasks[i]) != (state->dpad & dpadMasks[i]) && (now - dpadTime[i]) > debounceMS)
+		if ((debounceState->dpad & dpadMasks[i]) != (state->dpad & dpadMasks[i]) && (now - dpadTime[i]) > debounceMS)
 		{
-			debounceState.dpad ^= dpadMasks[i];
+			debounceState->dpad ^= dpadMasks[i];
 			dpadTime[i] = now;
 		}
 	}
 
 	for (int i = 0; i < GAMEPAD_BUTTON_COUNT; i++)
 	{
-		if ((debounceState.buttons & buttonMasks[i]) != (state->buttons & buttonMasks[i]) && (now - buttonTime[i]) > debounceMS)
+		if ((debounceState->buttons & buttonMasks[i]) != (state->buttons & buttonMasks[i]) && (now - buttonTime[i]) > debounceMS)
 		{
-			debounceState.buttons ^= buttonMasks[i];
+			debounceState->buttons ^= buttonMasks[i];
 			buttonTime[i] = now;
 		}
 	}
 
-	state->dpad = debounceState.dpad;
-	state->buttons = debounceState.buttons;
+	state->dpad = debounceState->dpad;
+	state->buttons = debounceState->buttons;
 }

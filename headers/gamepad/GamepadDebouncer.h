@@ -18,10 +18,11 @@ class GamepadDebouncer
 	public:
 		GamepadDebouncer(const uint8_t debounceMS = 5) : debounceMS(debounceMS) { }
 
-		void debounce(GamepadState *state);
+		void debounce(GamepadState *state, GamepadState *debounceState);
 
 		const uint8_t debounceMS;
-		GamepadState debounceState;
+		GamepadState p1DebounceState;
+		GamepadState p2DebounceState;
 		uint32_t dpadTime[4];
 		uint32_t buttonTime[GAMEPAD_BUTTON_COUNT];
 };
