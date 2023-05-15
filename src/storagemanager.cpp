@@ -22,6 +22,7 @@
 #include "addons/extra_button.h"
 #include "addons/i2canalog1219.h"
 #include "addons/i2cdisplay.h"
+#include "addons/i2cgpio_expander.h"
 #include "addons/jslider.h"
 #include "addons/neopicoleds.h"
 #include "addons/playernum.h"
@@ -75,6 +76,8 @@ void Storage::setDefaultBoardOptions()
 {
 	// Set GP2040 version string and 0 mem after
 	boardOptions.hasBoardOptions   = false;
+
+	// Player 1
 	boardOptions.pinP1DpadUp         = PIN_P1_DPAD_UP;
 	boardOptions.pinP1DpadDown       = PIN_P1_DPAD_DOWN;
 	boardOptions.pinP1DpadLeft       = PIN_P1_DPAD_LEFT;
@@ -93,6 +96,8 @@ void Storage::setDefaultBoardOptions()
 	boardOptions.pinP1ButtonR3       = PIN_P1_BUTTON_R3;
 	boardOptions.pinP1ButtonA1       = PIN_P1_BUTTON_A1;
 	boardOptions.pinP1ButtonA2       = PIN_P1_BUTTON_A2;
+	
+	// Player 2
 	boardOptions.pinP2DpadUp         = PIN_P2_DPAD_UP;
 	boardOptions.pinP2DpadDown       = PIN_P2_DPAD_DOWN;
 	boardOptions.pinP2DpadLeft       = PIN_P2_DPAD_LEFT;
@@ -112,7 +117,13 @@ void Storage::setDefaultBoardOptions()
 	boardOptions.pinP2ButtonA1       = PIN_P2_BUTTON_A1;
 	boardOptions.pinP2ButtonA2       = PIN_P2_BUTTON_A2;
 
-
+	// I2CGPIOExpander
+	boardOptions.I2CGPIOExpanderEnabled = I2C_GPIOEXPANDER_ENABLED;
+	boardOptions.I2CGPIOExpanderBlock   = (I2C_GPIOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+    boardOptions.I2CGPIOExpanderSDAPin  = I2C_GPIOEXPANDER_SDA_PIN;
+    boardOptions.I2CGPIOExpanderSCLPin  = I2C_GPIOEXPANDER_SCL_PIN;
+    boardOptions.I2CGPIOExpanderIntPin  = I2C_GPIOEXPANDER_INT_PIN;
+	boardOptions.I2CGPIOExpanderNumPins = I2C_GPIOEXPANDER_NUM_PINS;
 
 	boardOptions.buttonLayout      = BUTTON_LAYOUT;
 	boardOptions.buttonLayoutRight = BUTTON_LAYOUT_RIGHT;
@@ -235,6 +246,15 @@ void Storage::setDefaultAddonOptions()
 	addonOptions.ReverseInputEnabled    = REVERSE_ENABLED;
 	addonOptions.TurboInputEnabled      = TURBO_ENABLED;
 	addonOptions.WiiExtensionAddonEnabled      = WII_EXTENSION_ENABLED;
+
+	// I2CGPIOExpander
+	addonOptions.I2CGPIOExpanderEnabled = I2C_GPIOEXPANDER_ENABLED;
+	addonOptions.I2CGPIOExpanderBlock   = (I2C_GPIOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+    addonOptions.I2CGPIOExpanderSDAPin  = I2C_GPIOEXPANDER_SDA_PIN;
+    addonOptions.I2CGPIOExpanderSCLPin  = I2C_GPIOEXPANDER_SCL_PIN;
+    addonOptions.I2CGPIOExpanderIntPin  = I2C_GPIOEXPANDER_INT_PIN;
+	addonOptions.I2CGPIOExpanderNumPins = I2C_GPIOEXPANDER_NUM_PINS;
+
 	setAddonOptions(addonOptions);
 }
 

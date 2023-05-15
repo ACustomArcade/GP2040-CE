@@ -50,6 +50,8 @@ struct ButtonLayoutCustomOptions
 struct BoardOptions
 {
 	bool hasBoardOptions;
+
+	// Player 1
 	uint8_t pinP1DpadUp;
 	uint8_t pinP1DpadDown;
 	uint8_t pinP1DpadLeft;
@@ -68,6 +70,8 @@ struct BoardOptions
 	uint8_t pinP1ButtonR3;
 	uint8_t pinP1ButtonA1;
 	uint8_t pinP1ButtonA2;
+
+	//Player 2
 	uint8_t pinP2DpadUp;
 	uint8_t pinP2DpadDown;
 	uint8_t pinP2DpadLeft;
@@ -104,6 +108,14 @@ struct BoardOptions
 	ButtonLayoutCustomOptions buttonLayoutCustomOptions;
 	char boardVersion[32]; // 32-char limit to board name
 	uint32_t checksum;
+
+	// I2CGPIO_EXPANDER
+	int I2CGPIOExpanderEnabled;
+	int I2CGPIOExpanderBlock;
+	uint8_t I2CGPIOExpanderSDAPin;
+    uint8_t I2CGPIOExpanderSCLPin;
+	uint8_t I2CGPIOExpanderIntPin;
+	uint8_t I2CGPIOExpanderNumPins;
 };
 
 struct AddonOptions {
@@ -179,6 +191,15 @@ struct AddonOptions {
 	uint8_t TurboInputEnabled;
 	uint8_t SliderSOCDInputEnabled;
 	uint8_t WiiExtensionAddonEnabled;
+
+	// I2CGPIOExpander
+	uint8_t I2CGPIOExpanderEnabled;
+	int I2CGPIOExpanderBlock;
+	uint8_t I2CGPIOExpanderSDAPin;
+	uint8_t I2CGPIOExpanderSCLPin;
+	uint8_t I2CGPIOExpanderIntPin;
+	uint8_t I2CGPIOExpanderNumPins;
+
 	uint32_t checksum;
 };
 

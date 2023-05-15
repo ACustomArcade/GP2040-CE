@@ -6,7 +6,7 @@
 WiiExtension::WiiExtension(int sda, int scl, i2c_inst_t *i2cCtl, int32_t speed, uint8_t addr) {
     iSDA = sda;
     iSCL = scl;
-    picoI2C = i2cCtl;
+    picoI2C = i2cCtl ;
     bWire = bWire;
     iSpeed = speed;
     address = addr;

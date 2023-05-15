@@ -16,6 +16,7 @@
 // Please note that only when `PIN_SLIDER_LS` and  `PIN_SLIDER_RS` are set to `-1` will the button combo shortcut for DP/LS/RS work.
 // The buttons are listed in GP2040 configuration, beside each the listed order is *GP2040 / Xinput / Switch / PS3 / Directinput / Arcade*
 
+// Player 1
 #define PIN_P1_DPAD_UP              22  // UP
 #define PIN_P1_DPAD_DOWN            23  // DOWN
 #define PIN_P1_DPAD_RIGHT           26  // RIGHT
@@ -34,6 +35,8 @@
 #define PIN_P1_BUTTON_R3            -1  // R3 / RS / RS / R3 / 12 / RS
 #define PIN_P1_BUTTON_A1            -1  // A1 / Guide / Home / PS / 13 / ~
 #define PIN_P1_BUTTON_A2            -1  // A2 / ~ / Capture / ~ / 14 / ~
+
+// Player 2
 #define PIN_P2_DPAD_UP              10  // UP
 #define PIN_P2_DPAD_DOWN            11  // DOWN
 #define PIN_P2_DPAD_RIGHT           13  // RIGHT
@@ -207,6 +210,16 @@
 #define I2C_ANALOG1219_BLOCK i2c0
 #define I2C_ANALOG1219_SPEED 400000
 #define I2C_ANALOG1219_ADDRESS 0x40
+
+// I2C GPIO Expander Options
+#define I2C_GPIOEXPANDER_ENABLED 1
+#define I2C_GPIOEXPANDER_INT_PIN 27
+#define I2C_GPIOEXPANDER_SDA_PIN 28
+#define I2C_GPIOEXPANDER_SCL_PIN 29
+#define I2C_GPIOEXPANDER_BLOCK i2c0
+#define I2C_GPIOEXPANDER_NUM_PINS 16
+#define I2C_GPIOEXPANDER_SPEED 400000
+#define I2C_GPIOEXPANDER_ADDRESS 0x40
 
 // Reverse Button section
 #define REVERSE_LED_PIN -1

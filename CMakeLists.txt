@@ -116,8 +116,9 @@ src/addons/buzzerspeaker.cpp
 src/addons/dualdirectional.cpp
 src/addons/extra_button.cpp
 src/addons/i2canalog1219.cpp
-src/addons/jslider.cpp
 src/addons/i2cdisplay.cpp
+src/addons/i2cgpio_expander.cpp
+src/addons/jslider.cpp
 src/addons/neopicoleds.cpp
 src/addons/playernum.cpp
 src/addons/playerleds.cpp
