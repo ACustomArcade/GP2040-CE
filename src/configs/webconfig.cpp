@@ -839,6 +839,28 @@ std::string setAddonOptions()
 	docToValue(addonOptions.ReverseInputEnabled, doc, "ReverseInputEnabled");
 	docToValue(addonOptions.TurboInputEnabled, doc, "TurboInputEnabled");
 	docToValue(addonOptions.WiiExtensionAddonEnabled, doc, "WiiExtensionAddonEnabled");
+	docToPin(addonOptions.i2cIOExpanderSDAPin, doc, "i2cIOExpanderSDAPin");
+	docToPin(addonOptions.i2cIOExpanderSCLPin, doc, "i2cIOExpanderSCLPin");
+	docToPin(addonOptions.i2cIOExpanderINTPin, doc, "i2cIOExpanderINTPin");
+	docToValue(addonOptions.i2cIOExpanderBlock, doc, "i2cIOExpanderBlock");
+	docToValue(addonOptions.i2cIOExpanderSpeed, doc, "i2cIOExpanderSpeed");
+	docToValue(addonOptions.i2cIOExpanderAddress, doc, "i2cIOExpanderAddress");
+	docToValue(addonOptions.i2cIOExpanderPins[0], doc, "i2cIOExpanderPin0");
+	docToValue(addonOptions.i2cIOExpanderPins[1], doc, "i2cIOExpanderPin1");
+	docToValue(addonOptions.i2cIOExpanderPins[2], doc, "i2cIOExpanderPin2");
+	docToValue(addonOptions.i2cIOExpanderPins[3], doc, "i2cIOExpanderPin3");
+	docToValue(addonOptions.i2cIOExpanderPins[4], doc, "i2cIOExpanderPin4");
+	docToValue(addonOptions.i2cIOExpanderPins[5], doc, "i2cIOExpanderPin5");
+	docToValue(addonOptions.i2cIOExpanderPins[6], doc, "i2cIOExpanderPin6");
+	docToValue(addonOptions.i2cIOExpanderPins[7], doc, "i2cIOExpanderPin7");
+	docToValue(addonOptions.i2cIOExpanderPins[8], doc, "i2cIOExpanderPin8");
+	docToValue(addonOptions.i2cIOExpanderPins[9], doc, "i2cIOExpanderPin9");
+	docToValue(addonOptions.i2cIOExpanderPins[10], doc, "i2cIOExpanderPin10");
+	docToValue(addonOptions.i2cIOExpanderPins[11], doc, "i2cIOExpanderPin11");
+	docToValue(addonOptions.i2cIOExpanderPins[12], doc, "i2cIOExpanderPin12");
+	docToValue(addonOptions.i2cIOExpanderPins[13], doc, "i2cIOExpanderPin13");
+	docToValue(addonOptions.i2cIOExpanderPins[14], doc, "i2cIOExpanderPin14");
+	docToValue(addonOptions.i2cIOExpanderPins[15], doc, "i2cIOExpanderPin15");
 
 	Storage::getInstance().setAddonOptions(addonOptions);
 
@@ -1014,6 +1036,29 @@ std::string getAddonOptions()
 	writeDoc(doc, "ReverseInputEnabled", addonOptions.ReverseInputEnabled);
 	writeDoc(doc, "TurboInputEnabled", addonOptions.TurboInputEnabled);
 	writeDoc(doc, "WiiExtensionAddonEnabled", addonOptions.WiiExtensionAddonEnabled);
+
+	writeDoc(doc, "i2cIOExpanderSDAPin", addonOptions.i2cIOExpanderSDAPin == 0xFF ? -1 : addonOptions.i2cIOExpanderSDAPin);
+	writeDoc(doc, "i2cIOExpanderSCLPin", addonOptions.i2cIOExpanderSCLPin == 0xFF ? -1 : addonOptions.i2cIOExpanderSCLPin);
+	writeDoc(doc, "i2cIOExpanderINTPin", addonOptions.i2cIOExpanderINTPin == 0xFF ? -1 : addonOptions.i2cIOExpanderINTPin);
+	writeDoc(doc, "i2cIOExpanderBlock", addonOptions.i2cIOExpanderBlock);
+	writeDoc(doc, "i2cIOExpanderSpeed", addonOptions.i2cIOExpanderSpeed);
+	writeDoc(doc, "i2cIOExpanderAddress", addonOptions.i2cIOExpanderAddress);
+	writeDoc(doc, "i2cIOExpanderPin0", addonOptions.i2cIOExpanderPins[0]);
+	writeDoc(doc, "i2cIOExpanderPin1", addonOptions.i2cIOExpanderPins[1]);
+	writeDoc(doc, "i2cIOExpanderPin2", addonOptions.i2cIOExpanderPins[2]);
+	writeDoc(doc, "i2cIOExpanderPin3", addonOptions.i2cIOExpanderPins[3]);
+	writeDoc(doc, "i2cIOExpanderPin4", addonOptions.i2cIOExpanderPins[4]);
+	writeDoc(doc, "i2cIOExpanderPin5", addonOptions.i2cIOExpanderPins[5]);
+	writeDoc(doc, "i2cIOExpanderPin6", addonOptions.i2cIOExpanderPins[6]);
+	writeDoc(doc, "i2cIOExpanderPin7", addonOptions.i2cIOExpanderPins[7]);
+	writeDoc(doc, "i2cIOExpanderPin8", addonOptions.i2cIOExpanderPins[8]);
+	writeDoc(doc, "i2cIOExpanderPin9", addonOptions.i2cIOExpanderPins[9]);
+	writeDoc(doc, "i2cIOExpanderPin10", addonOptions.i2cIOExpanderPins[10]);
+	writeDoc(doc, "i2cIOExpanderPin11", addonOptions.i2cIOExpanderPins[11]);
+	writeDoc(doc, "i2cIOExpanderPin12", addonOptions.i2cIOExpanderPins[12]);
+	writeDoc(doc, "i2cIOExpanderPin13", addonOptions.i2cIOExpanderPins[13]);
+	writeDoc(doc, "i2cIOExpanderPin14", addonOptions.i2cIOExpanderPins[14]);
+	writeDoc(doc, "i2cIOExpanderPin15", addonOptions.i2cIOExpanderPins[15]);
 
 	return serialize_json(doc);
 }

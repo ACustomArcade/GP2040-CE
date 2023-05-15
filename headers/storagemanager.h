@@ -86,6 +86,14 @@ struct BoardOptions
 	ButtonLayoutCustomOptions buttonLayoutCustomOptions;
 	char boardVersion[32]; // 32-char limit to board name
 	uint32_t checksum;
+
+	uint8_t i2cIOExpanderSDAPin;
+	uint8_t i2cIOExpanderSCLPin;
+	uint8_t i2cIOExpanderINTPin;
+	int i2cIOExpanderBlock;
+	uint32_t i2cIOExpanderSpeed;
+	uint8_t i2cIOExpanderAddress;
+	uint32_t i2cIOExpanderPins[16];
 };
 
 struct AddonOptions {
@@ -161,6 +169,13 @@ struct AddonOptions {
 	uint8_t TurboInputEnabled;
 	uint8_t SliderSOCDInputEnabled;
 	uint8_t WiiExtensionAddonEnabled;
+	uint8_t i2cIOExpanderSDAPin;
+	uint8_t i2cIOExpanderSCLPin;
+	uint8_t i2cIOExpanderINTPin;
+	int i2cIOExpanderBlock;
+	uint32_t i2cIOExpanderSpeed;
+	uint8_t i2cIOExpanderAddress;
+	uint32_t i2cIOExpanderPins[16];
 	uint32_t checksum;
 };
 

@@ -22,6 +22,7 @@
 #include "addons/extra_button.h"
 #include "addons/i2canalog1219.h"
 #include "addons/i2cdisplay.h"
+#include "addons/i2cioexpander.h"
 #include "addons/jslider.h"
 #include "addons/neopicoleds.h"
 #include "addons/playernum.h"
@@ -107,7 +108,30 @@ void Storage::setDefaultBoardOptions()
 	boardOptions.displaySize       = DISPLAY_SIZE;
 	boardOptions.displayFlip       = DISPLAY_FLIP;
 	boardOptions.displayInvert     = DISPLAY_INVERT;
-	boardOptions.displaySaverTimeout     = DISPLAY_SAVER_TIMEOUT;
+	boardOptions.displaySaverTimeout	= DISPLAY_SAVER_TIMEOUT;
+
+	boardOptions.i2cIOExpanderSCLPin	= I2C_IOEXPANDER_SCL_PIN;
+	boardOptions.i2cIOExpanderSDAPin	= I2C_IOEXPANDER_SDA_PIN;
+	boardOptions.i2cIOExpanderINTPin	= I2C_IOEXPANDER_INT_PIN;
+	boardOptions.i2cIOExpanderBlock		= (I2C_IOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+	boardOptions.i2cIOExpanderSpeed		= I2C_IOEXPANDER_SPEED;
+	boardOptions.i2cIOExpanderAddress	= I2C_IOEXPANDER_ADDRESS;
+	boardOptions.i2cIOExpanderPins[0]	= I2C_IOEXPANDER_PIN_0; // PCA95xx uses Pins 0-7, 10-17
+	boardOptions.i2cIOExpanderPins[1]	= I2C_IOEXPANDER_PIN_1;
+	boardOptions.i2cIOExpanderPins[2]	= I2C_IOEXPANDER_PIN_2;
+	boardOptions.i2cIOExpanderPins[3]	= I2C_IOEXPANDER_PIN_3;
+	boardOptions.i2cIOExpanderPins[4]	= I2C_IOEXPANDER_PIN_4;
+	boardOptions.i2cIOExpanderPins[5]	= I2C_IOEXPANDER_PIN_5;
+	boardOptions.i2cIOExpanderPins[6]	= I2C_IOEXPANDER_PIN_6;
+	boardOptions.i2cIOExpanderPins[7]	= I2C_IOEXPANDER_PIN_7;
+	boardOptions.i2cIOExpanderPins[8]	= I2C_IOEXPANDER_PIN_10;
+	boardOptions.i2cIOExpanderPins[9]	= I2C_IOEXPANDER_PIN_11;
+	boardOptions.i2cIOExpanderPins[10]	= I2C_IOEXPANDER_PIN_12;
+	boardOptions.i2cIOExpanderPins[11]	= I2C_IOEXPANDER_PIN_13;
+	boardOptions.i2cIOExpanderPins[12]	= I2C_IOEXPANDER_PIN_14;
+	boardOptions.i2cIOExpanderPins[13]	= I2C_IOEXPANDER_PIN_15;
+	boardOptions.i2cIOExpanderPins[14]	= I2C_IOEXPANDER_PIN_16;
+	boardOptions.i2cIOExpanderPins[15]	= I2C_IOEXPANDER_PIN_17;
 
 	ButtonLayoutParams params = {
 		.layout = BUTTON_LAYOUT,
@@ -214,6 +238,30 @@ void Storage::setDefaultAddonOptions()
 	addonOptions.ReverseInputEnabled    = REVERSE_ENABLED;
 	addonOptions.TurboInputEnabled      = TURBO_ENABLED;
 	addonOptions.WiiExtensionAddonEnabled      = WII_EXTENSION_ENABLED;
+
+	addonOptions.i2cIOExpanderSCLPin	= I2C_IOEXPANDER_SCL_PIN;
+	addonOptions.i2cIOExpanderSDAPin	= I2C_IOEXPANDER_SDA_PIN;
+	addonOptions.i2cIOExpanderINTPin	= I2C_IOEXPANDER_INT_PIN;
+	addonOptions.i2cIOExpanderBlock		= (I2C_IOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+	addonOptions.i2cIOExpanderSpeed		= I2C_IOEXPANDER_SPEED;
+	addonOptions.i2cIOExpanderAddress	= I2C_IOEXPANDER_ADDRESS;
+	addonOptions.i2cIOExpanderPins[0]	= I2C_IOEXPANDER_PIN_0; // PCA95xx uses Pins 0-7, 10-17
+	addonOptions.i2cIOExpanderPins[1]	= I2C_IOEXPANDER_PIN_1;
+	addonOptions.i2cIOExpanderPins[2]	= I2C_IOEXPANDER_PIN_2;
+	addonOptions.i2cIOExpanderPins[3]	= I2C_IOEXPANDER_PIN_3;
+	addonOptions.i2cIOExpanderPins[4]	= I2C_IOEXPANDER_PIN_4;
+	addonOptions.i2cIOExpanderPins[5]	= I2C_IOEXPANDER_PIN_5;
+	addonOptions.i2cIOExpanderPins[6]	= I2C_IOEXPANDER_PIN_6;
+	addonOptions.i2cIOExpanderPins[7]	= I2C_IOEXPANDER_PIN_7;
+	addonOptions.i2cIOExpanderPins[8]	= I2C_IOEXPANDER_PIN_10;
+	addonOptions.i2cIOExpanderPins[9]	= I2C_IOEXPANDER_PIN_11;
+	addonOptions.i2cIOExpanderPins[10]	= I2C_IOEXPANDER_PIN_12;
+	addonOptions.i2cIOExpanderPins[11]	= I2C_IOEXPANDER_PIN_13;
+	addonOptions.i2cIOExpanderPins[12]	= I2C_IOEXPANDER_PIN_14;
+	addonOptions.i2cIOExpanderPins[13]	= I2C_IOEXPANDER_PIN_15;
+	addonOptions.i2cIOExpanderPins[14]	= I2C_IOEXPANDER_PIN_16;
+	addonOptions.i2cIOExpanderPins[15]	= I2C_IOEXPANDER_PIN_17;
+
 	setAddonOptions(addonOptions);
 }
 

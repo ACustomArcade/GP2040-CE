@@ -7,6 +7,7 @@
 #define PICO_BOARD_CONFIG_H_
 
 #include <GamepadEnums.h>
+
 // This is the main pin definition section.
 // This will let you specify which GPIO pin each button is assigned too.
 // You can set any of the main pins as `-1` to disable it.
@@ -15,31 +16,54 @@
 // Please note that only when `PIN_SLIDER_LS` and  `PIN_SLIDER_RS` are set to `-1` will the button combo shortcut for DP/LS/RS work.
 // The buttons are listed in GP2040 configuration, beside each the listed order is *GP2040 / Xinput / Switch / PS3 / Directinput / Arcade*
 
-#define PIN_DPAD_UP     22           // UP
-#define PIN_DPAD_DOWN   23           // DOWN
-#define PIN_DPAD_RIGHT  26           // RIGHT
-#define PIN_DPAD_LEFT   24           // LEFT
-#define PIN_BUTTON_B1   21           // B1 / A / B / Cross / 2 / K1
-#define PIN_BUTTON_B2   20           // B2 / B / A / Circle / 3 / K2
-#define PIN_BUTTON_R2   19           // R2 / RT / ZR / R2 / 8 / K3
-#define PIN_BUTTON_L2   14           // L2 / LT / ZL / L2 / 7 / K4
-#define PIN_BUTTON_B3   18          // B3 / X / Y / Square / 1 / P1
-#define PIN_BUTTON_B4   17          // B4 / Y / X / Triangle / 4 / P2
-#define PIN_BUTTON_R1   16          // R1 / RB / R / R1 / 6 / P3
-#define PIN_BUTTON_L1   15          // L1 / LB / L / L1 / 5 / P4
-#define PIN_BUTTON_S1   11           // S1 / Back / Minus / Select / 9 / Coin
-#define PIN_BUTTON_S2   13           // S2 / Start / Plus / Start / 10 / Start
-#define PIN_BUTTON_L3   -1          // L3 / LS / LS / L3 / 11 / LS
-#define PIN_BUTTON_R3   -1          // R3 / RS / RS / R3 / 12 / RS
-#define PIN_BUTTON_A1   12          // A1 / Guide / Home / PS / 13 / ~
-#define PIN_BUTTON_A2   -1          // A2 / ~ / Capture / ~ / 14 / ~
-#define PIN_BUTTON_TURBO -1         // Turbo
-#define PIN_BUTTON_REVERSE -1       // UDLR Reverse
-#define PIN_SLIDER_LS    -1         // Left Stick Slider
-#define PIN_SLIDER_RS    -1         // Right Stick Slider
-#define PIN_SLIDER_SOCD_ONE    -1         // SOCD Slider Pin One
-#define PIN_SLIDER_SOCD_TWO    -1         // SOCD Slider Pin Two
+#define PIN_DPAD_UP             22  // UP
+#define PIN_DPAD_DOWN           23  // DOWN
+#define PIN_DPAD_RIGHT          26  // RIGHT
+#define PIN_DPAD_LEFT           24  // LEFT
+#define PIN_BUTTON_B1           21  // B1 / A / B / Cross / 2 / K1
+#define PIN_BUTTON_B2           20  // B2 / B / A / Circle / 3 / K2
+#define PIN_BUTTON_R2           19  // R2 / RT / ZR / R2 / 8 / K3
+#define PIN_BUTTON_L2           14  // L2 / LT / ZL / L2 / 7 / K4
+#define PIN_BUTTON_B3           18  // B3 / X / Y / Square / 1 / P1
+#define PIN_BUTTON_B4           17  // B4 / Y / X / Triangle / 4 / P2
+#define PIN_BUTTON_R1           16  // R1 / RB / R / R1 / 6 / P3
+#define PIN_BUTTON_L1           15  // L1 / LB / L / L1 / 5 / P4
+#define PIN_BUTTON_S1           -1  // S1 / Back / Minus / Select / 9 / Coin
+#define PIN_BUTTON_S2           -1  // S2 / Start / Plus / Start / 10 / Start
+#define PIN_BUTTON_L3           -1  // L3 / LS / LS / L3 / 11 / LS
+#define PIN_BUTTON_R3           -1  // R3 / RS / RS / R3 / 12 / RS
+#define PIN_BUTTON_A1           -1  // A1 / Guide / Home / PS / 13 / ~
+#define PIN_BUTTON_A2           -1  // A2 / ~ / Capture / ~ / 14 / ~
+#define PIN_BUTTON_TURBO        -1  // Turbo
+#define PIN_BUTTON_REVERSE      -1  // UDLR Reverse
+#define PIN_SLIDER_LS           -1  // Left Stick Slider
+#define PIN_SLIDER_RS           -1  // Right Stick Slider
+#define PIN_SLIDER_SOCD_ONE     -1  // SOCD Slider Pin One
+#define PIN_SLIDER_SOCD_TWO     -1  // SOCD Slider Pin Two
 
+
+// IO Expander configuration
+#define I2C_IOEXPANDER_SCL_PIN 29
+#define I2C_IOEXPANDER_SDA_PIN 28
+#define I2C_IOEXPANDER_INT_PIN 27
+#define I2C_IOEXPANDER_BLOCK i2c0
+#define I2C_IOEXPANDER_SPEED 400000
+#define I2C_IOEXPANDER_ADDRESS 0x20
+#define I2C_IOEXPANDER_PIN_0 -1
+#define I2C_IOEXPANDER_PIN_1 GAMEPAD_MASK_S1
+#define I2C_IOEXPANDER_PIN_2 GAMEPAD_MASK_A1
+#define I2C_IOEXPANDER_PIN_3 GAMEPAD_MASK_S2
+#define I2C_IOEXPANDER_PIN_4 -1
+#define I2C_IOEXPANDER_PIN_5 -1
+#define I2C_IOEXPANDER_PIN_6 -1
+#define I2C_IOEXPANDER_PIN_7 -1
+#define I2C_IOEXPANDER_PIN_10 -1
+#define I2C_IOEXPANDER_PIN_11 -1
+#define I2C_IOEXPANDER_PIN_12 -1
+#define I2C_IOEXPANDER_PIN_14 -1
+#define I2C_IOEXPANDER_PIN_15 -1
+#define I2C_IOEXPANDER_PIN_16 -1
+#define I2C_IOEXPANDER_PIN_17 -1
 
 // This is the SOCD section.
 // SOCD stands for `simultaneous opposing cardinal directions`.
