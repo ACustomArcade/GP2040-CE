@@ -198,7 +198,7 @@
 // 4 - `NOSPLASH` - This will not display a splash screen on boot
 // Special note - All of the splash screen images can be changed via `include/bitmaps.h`
 
-#define HAS_I2C_DISPLAY 0
+#define HAS_I2C_DISPLAY 1
 #define I2C_SDA_PIN 28
 #define I2C_SCL_PIN 29
 #define I2C_BLOCK i2c0

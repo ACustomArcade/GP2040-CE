@@ -24,6 +24,7 @@ void I2CIOExpanderAddon::setup() {
     gpio_pull_up(boardOptions.i2cIOExpanderINTPin);          // Set as PULLUP
 
     pinMask = 0;
+    preprocess();
 }
 
 void I2CIOExpanderAddon::preprocess() {
@@ -38,8 +39,8 @@ void I2CIOExpanderAddon::preprocess() {
 
     // If the I/O pin -> button is defined, read it from the mask and add to our gamepad state
     if ( pinMask != 0 ) {
-        for(uint8_t i = 0; i < 7; i++) {
-            if ( boardOptions.i2cIOExpanderPins[i] != 0 && pinMask & (1<<i)) {
+        for(uint8_t i = 0; i < 15; i++) {
+            if ( boardOptions.i2cIOExpanderPins[i] != -1 && pinMask & (1<<i)) {
                 if ( boardOptions.i2cIOExpanderPins[i] & GAMEPAD_MASK_DPAD )
                     gamepad->state.dpad |= boardOptions.i2cIOExpanderPins[i];
                 else

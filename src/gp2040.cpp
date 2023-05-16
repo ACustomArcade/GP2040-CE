@@ -123,6 +123,10 @@ void GP2040::run() {
 			ConfigManager::getInstance().loop();
 
 			gamepad->read();
+
+			// Pre-Process add-ons for MPGS
+			addons.PreprocessAddons(ADDON_PROCESS::CORE0_INPUT);
+
 			webConfigHotkey.process(gamepad, configMode);
 
 			continue;
@@ -139,11 +143,12 @@ void GP2040::run() {
 		gamepad->debounce();
 	#endif
 		gamepad->hotkey(); 	// check for MPGS hotkeys
-		webConfigHotkey.process(gamepad, configMode);
 
 		// Pre-Process add-ons for MPGS
 		addons.PreprocessAddons(ADDON_PROCESS::CORE0_INPUT);
 		
+		webConfigHotkey.process(gamepad, configMode);
+
 		gamepad->process(); // process through MPGS
 
 		// (Post) Process for add-ons
@@ -175,8 +180,18 @@ GP2040::BootAction GP2040::getBootAction() {
 			{
 				// Determine boot action based on gamepad state during boot
 				Gamepad * gamepad = Storage::getInstance().GetGamepad();
+				
+				AddonManager addons;
+				
 				gamepad->read();
 
+				// Init I2C Expander addon so buttons can be used for boot mode selection
+				addons.LoadAddon(new I2CIOExpanderAddon(), CORE0_INPUT);
+				
+				// Pre-Process add-ons for MPGS
+				addons.PreprocessAddons(ADDON_PROCESS::CORE0_INPUT);
+
+				printf("Buttons: %16x\n", gamepad->state.buttons);
 				if (gamepad->pressedF1() && gamepad->pressedUp()) {
 					return BootAction::ENTER_USB_MODE;
 				} else if (gamepad->pressedS2()) {
