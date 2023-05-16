@@ -31,9 +31,9 @@ void I2CIOExpanderAddon::preprocess() {
     Gamepad * gamepad = Storage::getInstance().GetGamepad();
 
     // Is our interrupt ready (Read for next frame (delay))
-    //if ( !gpio_get(boardOptions.i2cIOExpanderINTPin)) {
-    pinMask = pca.read();
-    //}
+    if ( !gpio_get(boardOptions.i2cIOExpanderINTPin)) {
+        pinMask = ~pca.read();
+    }
 
 
     // If the I/O pin -> button is defined, read it from the mask and add to our gamepad state
